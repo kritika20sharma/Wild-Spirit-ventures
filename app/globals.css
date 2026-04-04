@@ -90,3 +90,50 @@ h1, h2, h3, h4 {
 .animate-section-enter {
   animation: sectionEnter 1s ease-out both;
 }
+
+/* ── Scroll-Reveal (IntersectionObserver-driven) ────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.85s ease, transform 0.85s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.85s ease, transform 0.85s ease;
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.85s ease, transform 0.85s ease;
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.22s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.5s; }
+.reveal-delay-5 { transition-delay: 0.64s; }
+
+/* ── WhatsApp Pulse ─────────────────────────────────────────── */
+@keyframes wa-pulse {
+  0%   { box-shadow: 0 0 0 0   rgba(37, 211, 102, 0.55); }
+  70%  { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);   }
+  100% { box-shadow: 0 0 0 0   rgba(37, 211, 102, 0);    }
+}
+.animate-wa-pulse { animation: wa-pulse 2.5s ease infinite; }
+
+/* ── Journey trail (vertical line that fills on scroll) ──────── */
+@keyframes trailGrow {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+.journey-trail {
+  transform-origin: top;
+  animation: trailGrow linear both;
+  animation-timeline: scroll();
+}
