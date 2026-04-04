@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
+/* ── Brand Tokens ─────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --wsv-forest:  #2C4A1E;   /* deep forest green  */
+  --wsv-earth:   #6B4226;   /* warm earth brown   */
+  --wsv-cream:   #F4EFE4;   /* cream background   */
+  --wsv-sage:    #5E7D52;   /* sage / mid-green   */
+  --wsv-dark:    #1A1A1A;   /* near-black text    */
+  --wsv-gold:    #C9A84C;   /* warm accent gold   */
+
+  --background:  var(--wsv-cream);
+  --foreground:  var(--wsv-dark);
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-foreground:  var(--foreground);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ── Base ─────────────────────────────────────────────────── */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lato', Arial, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* ── Breathing Nature Animations ─────────────────────────── */
+
+/* 1. Slow jungle-breathe zoom on images */
+@keyframes breathe {
+  0%   { transform: scale(1);    }
+  100% { transform: scale(1.08); }
+}
+
+.animate-breathe {
+  animation: breathe 10s ease-in-out infinite alternate;
+}
+
+/* 2. Gentle leaf sway (micro-animation) */
+@keyframes leafSway {
+  0%   { transform: rotate(-2deg) translateX(0px);   }
+  50%  { transform: rotate(1deg)  translateX(3px);   }
+  100% { transform: rotate(-1deg) translateX(-2px);  }
+}
+
+.animate-leaf-sway {
+  animation: leafSway 6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* 3. Fade-in with slight upward motion */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.85s ease-out both;
+}
+
+/* Staggered delays for child elements */
+.fade-up-delay-1 { animation-delay: 0.1s; }
+.fade-up-delay-2 { animation-delay: 0.25s; }
+.fade-up-delay-3 { animation-delay: 0.4s; }
+.fade-up-delay-4 { animation-delay: 0.55s; }
+
+/* 4. Section transition — slide + fade (apply to each section wrapper) */
+@keyframes sectionEnter {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-section-enter {
+  animation: sectionEnter 1s ease-out both;
 }
