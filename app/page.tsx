@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import Destinations from '@/components/Destinations';
+import JourneyScroll from '@/components/JourneyScroll';
 import BrandPromise from '@/components/BrandPromise';
 import Testimonials from '@/components/Testimonials';
 import CTA from '@/components/CTA';
@@ -11,7 +11,7 @@ export default function Home() {
       <Navbar />
       <main className="flex flex-col w-full">
         <Hero />
-        <Destinations />
+        <JourneyScroll />
         <BrandPromise />
         <Testimonials />
         <CTA />

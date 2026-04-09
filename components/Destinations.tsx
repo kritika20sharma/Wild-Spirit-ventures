@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from './ScrollReveal';
 
@@ -10,6 +11,7 @@ const ventures = [
     desc: 'Intimate jungle lodge at the edge of Tadoba — India\'s oldest tiger reserve. Guided safaris, naturalist walks, and stays that feel like the forest invited you in.',
     badge: 'Tiger Country',
     color: 'from-[#2C4A1E]/80',
+    image: '/resort-exterior.jpg',
   },
   {
     slug: 'jonaki-pench',
@@ -19,6 +21,7 @@ const ventures = [
     desc: 'Boutique eco-stays woven into the teak forests of Pench. Leopards, wild dogs, and a chorus of birds — unhurried, authentic, extraordinary.',
     badge: 'Boutique Eco',
     color: 'from-[#3A5C28]/80',
+    image: null,
   },
   {
     slug: 'fly-unfettered',
@@ -28,6 +31,7 @@ const ventures = [
     desc: 'Expert-led treks, multi-day wilderness expeditions, and off-trail adventures for those who want more than a resort. Safety, skill, and pure wild freedom.',
     badge: 'Expeditions',
     color: 'from-[#4A3C1E]/80',
+    image: null,
   },
 ];
 
@@ -53,15 +57,22 @@ export default function Destinations() {
           <ScrollReveal key={v.slug} delay={i * 120} className="h-full">
             <div className="group h-full flex flex-col rounded-2xl overflow-hidden bg-white border border-[var(--wsv-forest)]/10 shadow-sm hover:shadow-xl transition-shadow duration-500">
 
-              {/* Image placeholder — earthy gradient with pattern */}
-              <div className={`relative h-52 bg-gradient-to-br ${v.color} to-[var(--wsv-cream)] overflow-hidden`}>
-                <div className="absolute inset-0 animate-breathe flex items-end p-4">
-                  {/* Leaf watermark */}
+              {/* Card image */}
+              <div className={`relative h-52 overflow-hidden ${!v.image ? `bg-gradient-to-br ${v.color} to-[var(--wsv-cream)]` : ''}`}>
+                {v.image ? (
+                  <Image
+                    src={v.image}
+                    alt={v.name}
+                    fill
+                    className="object-cover animate-breathe"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                ) : (
                   <svg viewBox="0 0 80 120" fill="none" className="absolute right-4 top-4 w-20 h-20 opacity-10">
                     <path d="M40 116 C40 116 4 80 4 44 C4 20 20 4 40 4 C60 4 76 20 76 44 C76 80 40 116 40 116Z" fill="white"/>
                   </svg>
-                </div>
-                <span className="absolute top-4 left-4 bg-white/20 backdrop-blur-sm text-white text-xs tracking-widest uppercase font-[family-name:var(--font-lato)] px-3 py-1 rounded-full border border-white/30">
+                )}
+                <span className="absolute top-4 left-4 z-10 bg-white/20 backdrop-blur-sm text-white text-xs tracking-widest uppercase font-[family-name:var(--font-lato)] px-3 py-1 rounded-full border border-white/30">
                   {v.badge}
                 </span>
               </div>

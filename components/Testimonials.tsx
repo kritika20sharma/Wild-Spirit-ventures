@@ -3,21 +3,24 @@ import ScrollReveal from './ScrollReveal';
 const testimonials = [
   {
     quote:
-      'The safari at Tadoba was unlike anything we had experienced. Our naturalist knew every inch of the forest — we spotted a tigress and her cubs within the first hour.',
-    author: 'Priya & Rahul S.',
-    detail: 'Footprint Jungle Resort, Tadoba',
+      'The perfect blend of luxury and nature. The staff went above and beyond to make our stay memorable. The safari experiences were incredible!',
+    author: 'Rahul Sharma',
+    location: 'Mumbai',
+    venture: 'Footprint Jungle Resort, Tadoba',
   },
   {
     quote:
-      'Jonaki Pench felt like a private wilderness. The teak canopy, the sounds at night, the warmth of the team — we extended our stay by two days because we simply couldn\'t leave.',
-    author: 'Arjun M.',
-    detail: 'Jonaki Pench',
+      'Absolutely stunning location with top-notch facilities. The private cottage was dreamy, and we spotted tigers on two of our three safaris!',
+    author: 'Priyank Chaudhari',
+    location: 'Surat',
+    venture: 'Footprint Jungle Resort, Tadoba',
   },
   {
     quote:
-      'The Fly Unfettered trek through the Satpura range was the adventure I had been searching for years. Expert guides, zero compromise on safety, and memories that will last a lifetime.',
-    author: 'Sneha & Kartik V.',
-    detail: 'Fly Unfettered Expeditions',
+      'The attention to detail is remarkable. From the organic food to the eco-friendly practices, this resort sets a new standard for sustainable luxury.',
+    author: 'Anisha Singh',
+    location: 'Delhi',
+    venture: 'Footprint Jungle Resort, Tadoba',
   },
 ];
 
@@ -45,7 +48,7 @@ export default function Testimonials() {
                   viewBox="0 0 40 30"
                   fill="currentColor"
                 >
-                  <path d="M0 30 L8 0 L18 0 L10 30 Z M20 30 L28 0 L38 0 L30 30 Z"/>
+                  <path d="M0 30 L8 0 L18 0 L10 30 Z M20 30 L28 0 L38 0 L30 30Z"/>
                 </svg>
 
                 {/* Stars */}
@@ -64,9 +67,10 @@ export default function Testimonials() {
                 <div className="mt-6 pt-5 border-t border-[var(--wsv-forest)]/8">
                   <p className="font-[family-name:var(--font-playfair)] font-semibold text-[var(--wsv-forest)] text-sm">
                     {t.author}
+                    <span className="font-[family-name:var(--font-lato)] font-normal text-gray-400 text-xs"> · {t.location}</span>
                   </p>
                   <p className="font-[family-name:var(--font-lato)] text-xs text-[var(--wsv-sage)] mt-0.5 tracking-wide">
-                    {t.detail}
+                    {t.venture}
                   </p>
                 </div>
               </div>

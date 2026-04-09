@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -12,97 +13,112 @@ type VentureData = {
   heroColor: string;
   intro: string[];
   experiences: { title: string; desc: string }[];
-  accommodation?: { title: string; desc: string }[];
+  accommodation?: { title: string; price?: string; desc: string }[];
   expeditions?: { title: string; desc: string }[];
+  contact?: { phone?: string; phone2?: string; email?: string; address?: string };
   metaTitle: string;
   metaDesc: string;
   externalLink?: string;
+  heroImage?: string;
+  galleryImages?: { src: string; alt: string }[];
 };
 
 const ventures: Record<string, VentureData> = {
   'footprint-jungle-resort': {
     name: 'Footprint Jungle Resort',
-    location: 'Tadoba Andhari Tiger Reserve · Maharashtra',
+    location: 'Tadoba Andhari Tiger Reserve · Chandrapur, Maharashtra 441222',
     tagline: 'Where tigers roam at dawn.',
     badge: 'Tiger Country',
     heroColor: 'from-[#1C3510] via-[#2C4A1E] to-[#3A6B24]',
     metaTitle: 'Footprint Jungle Resort | Tadoba Tiger Reserve Stay | Wild Spirit Ventures',
     metaDesc:
-      'Intimate jungle lodge at Tadoba Andhari Tiger Reserve. Expert-guided safaris, forest walks, and stays that bring you closer to India\'s wild heart.',
-    externalLink: 'https://www.footprintjungleresort.com',
+      'Premium jungle lodge at Tadoba Andhari Tiger Reserve. Expert-guided safaris, infinity pool, organic dining, and stays that put you face-to-face with India\'s tiger country.',
+    externalLink: 'https://tadobafootprintresort.com',
+    heroImage: '/images/footprint/cottage-exterior.jpg',
+    galleryImages: [
+      { src: '/images/footprint/cottage-exterior.jpg', alt: 'Footprint Jungle Resort cottage exterior' },
+      { src: '/images/footprint/room-interior.jpg', alt: 'Comfortable jungle-themed room interior' },
+    ],
+    contact: {
+      phone: '+91 93802 99571',
+      phone2: '+91 96827 16827',
+      email: 'tadobafootprintresort@gmail.com',
+      address: 'Near Tadoba Andhari Tiger Reserve, Chandrapur District, Maharashtra 441222',
+    },
     intro: [
       'Tadoba Andhari Tiger Reserve is Maharashtra\'s largest and oldest national park — a forest where the ground trembles with the weight of wild things. Footprint Jungle Resort was built to honour that wildness, not compete with it.',
-      'Our lodge sits at the buffer zone — close enough to feel the pulse of the forest, far enough to let it breathe. Every detail, from the cottages to the dining, is designed to disappear into the landscape.',
+      'An unparalleled blend of comfort and adventure, the resort sits at the edge of the reserve — close enough to feel the pulse of the forest, comfortable enough to make you never want to leave. Expert-guided safaris by day, farm-to-table dining and an infinity pool overlooking the treeline by evening.',
     ],
     experiences: [
       {
         title: 'Tiger Safari (Jeep Drive)',
-        desc: 'Dawn and dusk safari drives into the core and buffer zones with a certified naturalist. Tigers, leopards, gaur, sloth bear, and over 195 bird species call this forest home.',
+        desc: 'Dawn and dusk jeep drives into Tadoba\'s core and buffer zones with a certified naturalist. Tigers, leopards, gaur, sloth bear, wild dog and over 195 bird species call this forest home.',
       },
       {
         title: 'Naturalist Walk',
-        desc: 'Step out of the jeep and into the forest on foot. These guided buffer zone walks reveal the microscopic world the vehicles always miss — tracks, pellets, fungi, and spoor.',
+        desc: 'Step out of the jeep and into the forest on foot. Buffer zone walks reveal tracks, spoor, fungi, and the thousand small things a vehicle will always miss.',
       },
       {
         title: 'Night Sky Sessions',
-        desc: 'The buffer zone is dark enough to see the Milky Way. Our evening astronomy sessions, paired with a campfire, are a ritual for guests who stay more than two nights.',
+        desc: 'The reserve\'s dark skies reveal the Milky Way in full. Our evening astronomy sessions paired with a campfire are a ritual for guests who stay more than two nights.',
       },
       {
         title: 'Photography Safari',
-        desc: 'Extended slots for photographers — positioned for light, not speed. Beanbags, extended stays at sighting points, and naturalists who understand what a great frame needs.',
+        desc: 'Extended safari slots for photographers — positioned for light, not speed. Beanbags, longer waits at key sighting spots, and naturalists who understand what makes a great frame.',
       },
     ],
     accommodation: [
       {
-        title: 'Forest Cottages',
-        desc: 'Spacious cottages with private sit-outs facing the tree line. Earthy interiors, natural materials, and all the comfort you need after a day in the wild.',
+        title: 'Deluxe Room',
+        price: '₹8,500 / night',
+        desc: 'Spacious rooms with modern amenities and a view of the surrounding jungle greenery. Rattan furniture, wildlife art, and everything you need after a day of adventure.',
       },
       {
-        title: 'Jungle Suite',
-        desc: 'Our larger suite for couples or families who want a little more space. A bathtub with a forest view and a private deck that belongs to the birds at dawn.',
-      },
-      {
-        title: 'Camping Under Canvas',
-        desc: 'Seasonal tented accommodation at the edge of the buffer zone — the closest you can legally sleep to the forest. Extraordinary.',
+        title: 'Luxury Suite',
+        price: '₹8,500 / night',
+        desc: 'Premium suites with a separate living area and swimming pool view overlooking the forest. The most immersive stay the resort offers.',
       },
     ],
   },
 
   'jonaki-pench': {
     name: 'Jonaki Pench',
-    location: 'Pench National Park · Madhya Pradesh',
+    location: 'Pench National Park · Turiya Road, Kohka, Madhya Pradesh 480881',
     tagline: 'The Jungle Book comes alive.',
     badge: 'Boutique Eco',
     heroColor: 'from-[#1E3A10] via-[#2C5020] to-[#3A7030]',
     metaTitle: 'Jonaki Pench | Pench National Park Stay | Wild Spirit Ventures',
     metaDesc:
-      'Boutique eco-stays in the teak forests of Pench National Park. Where Kipling\'s Jungle Book was born — wildlife safaris, nature walks, and unhurried wildness.',
+      'Boutique eco-stays in the teak forests of Pench National Park. Turiya Road, Kohka — where Kipling\'s Jungle Book was born. Safaris, nature walks, and unhurried wildness.',
     intro: [
-      'Pench is the forest that Rudyard Kipling immortalised in The Jungle Book. It\'s a quieter place than Tadoba — less visited, more contemplative, and home to one of India\'s most diverse ecosystems.',
-      'Jonaki Pench is our boutique response to this forest\'s character. Small, intentional stays that ask you to slow down and pay attention.',
+      'Pench is the forest Rudyard Kipling immortalised in The Jungle Book. It\'s a quieter place — less visited, more contemplative, and home to one of India\'s most diverse ecosystems. Dholes, leopards, tigers, and extraordinary birds coexist in a teak canopy that rewards patience.',
+      'Jonaki Pench is our boutique response to this forest\'s character — intentional stays designed for those who want to slow down, pay attention, and leave changed.',
     ],
+    contact: {
+      address: 'Turiya Road, Kohka, Pench National Park, Madhya Pradesh 480881',
+    },
     experiences: [
       {
         title: 'Safari Drives',
-        desc: 'Morning and afternoon jeep safaris into Pench\'s core zones. Tigers, wild dogs (dholes), leopards, and extraordinary birding — all in an unhurried, less crowded setting.',
+        desc: 'Morning and afternoon jeep safaris into Pench\'s core zones. Tigers, dholes, leopards, and extraordinary birding in an unhurried, less-crowded setting.',
       },
       {
-        title: 'Bird Walk at Dawn',
-        desc: 'Pench is one of Central India\'s premier birding destinations. Our guided dawn walks target the resident and migratory species that make this forest exceptional for birders.',
+        title: 'Dawn Bird Walk',
+        desc: 'Pench is one of Central India\'s premier birding destinations. Guided dawn walks target the resident and migratory species that make this forest exceptional.',
       },
       {
         title: 'Village Immersion',
-        desc: 'A day spent with the communities at the forest\'s edge — understanding the intricate relationship between people and the wild spaces they live alongside.',
+        desc: 'A day spent with the communities at the forest\'s edge — understanding the intricate balance between people and the wild spaces they live alongside.',
       },
       {
         title: 'Forest Sit',
-        desc: 'Sometimes the most powerful wildlife experience is simply sitting still. Our naturalists choose the right spot, and the forest reveals itself on its own terms.',
+        desc: 'Sometimes the most powerful wildlife experience is simply sitting still in the right place. Our naturalists choose the spot — the forest does the rest.',
       },
     ],
     accommodation: [
       {
         title: 'Eco Rooms',
-        desc: 'Rooms built with locally-sourced materials — teak, stone, and mud plaster. Naturally cool, beautifully quiet, and completely at home in the landscape.',
+        desc: 'Rooms built with locally-sourced materials — teak, stone, and mud plaster. Naturally cool, beautifully quiet, completely at home in the landscape.',
       },
       {
         title: 'Forest-Edge Bungalow',
@@ -112,17 +128,17 @@ const ventures: Record<string, VentureData> = {
   },
 
   'fly-unfettered': {
-    name: 'Fly Unfettered Expeditions',
-    location: 'Pan-India Treks & Wilderness Expeditions',
+    name: 'Fly Unfettered Treks',
+    location: 'Pan-India · Treks & Wilderness Expeditions',
     tagline: 'Beyond the boundary — into the unknown.',
     badge: 'Expeditions',
     heroColor: 'from-[#2A1E0C] via-[#4A3C1E] to-[#6B5520]',
-    metaTitle: 'Fly Unfettered Expeditions | Wilderness Treks India | Wild Spirit Ventures',
+    metaTitle: 'Fly Unfettered Treks | Wilderness Expeditions India | Wild Spirit Ventures',
     metaDesc:
       'Expert-led wilderness treks and multi-day expeditions across India. Satpura, Sahyadri, and beyond — for those who want real adventure with genuine expertise.',
     intro: [
-      'Fly Unfettered exists for the people for whom a resort isn\'t enough. The ones who want to walk further, sleep under actual stars, and find their edges in terrain that demands respect.',
-      'Every expedition we run is led by certified wilderness professionals with deep regional knowledge. Safety and authenticity are non-negotiable. Everything else is flexible.',
+      'Fly Unfettered exists for the people for whom a resort isn\'t enough. The ones who want to walk further, sleep under actual stars, and find their edges in terrain that demands real respect.',
+      'Every expedition is led by certified wilderness professionals with deep regional knowledge. Safety and authenticity are non-negotiable. Everything else is built around you.',
     ],
     experiences: [
       {
@@ -135,25 +151,25 @@ const ventures: Record<string, VentureData> = {
       },
       {
         title: 'Custom Wilderness Expeditions',
-        desc: 'Name your terrain, your duration, your group — we\'ll design an expedition around it. From school groups to corporate teams to solo adventurers.',
+        desc: 'Name your terrain, your duration, your group size — we\'ll design an expedition around it. School groups, corporate teams, or solo adventurers welcome.',
       },
       {
         title: 'Conservation Treks',
-        desc: 'Expeditions that partner with conservation organisations on the ground. You trek, you contribute to meaningful field work, and you leave the landscape better than you found it.',
+        desc: 'Expeditions that partner with conservation organisations on the ground. Trek, contribute to meaningful field work, and leave the landscape better than you found it.',
       },
     ],
     expeditions: [
       {
-        title: 'What to Expect',
-        desc: 'All Fly Unfettered treks are led by certified wilderness first responders. Gear, logistics, and route planning are handled in full — you bring your curiosity and your stamina.',
+        title: 'Safety First',
+        desc: 'All Fly Unfettered treks are led by certified wilderness first responders. Gear, logistics, and route planning handled in full — you bring your curiosity and your stamina.',
       },
       {
         title: 'Group Sizes',
-        desc: 'We cap standard treks at 10 participants to protect both the experience and the terrain. Private expeditions are available for any group size.',
+        desc: 'Standard treks capped at 10 participants to protect both the experience and the terrain. Private expeditions available for any group size.',
       },
       {
-        title: 'Fitness & Difficulty',
-        desc: 'We offer routes from moderate (4–6 hrs daily walking) to demanding (8+ hrs, technical terrain). We\'ll match you to the right expedition during planning.',
+        title: 'Fitness Levels',
+        desc: 'Routes from moderate (4–6 hrs daily) to demanding (8+ hrs, technical terrain). We\'ll match you to the right expedition during planning.',
       },
     ],
   },
@@ -188,11 +204,28 @@ export default function VentureDetailPage({ params }: { params: { slug: string }
       <Navbar />
 
       {/* Hero */}
-      <section className={`relative pt-32 pb-24 px-6 bg-gradient-to-br ${v.heroColor} text-white overflow-hidden`}>
-        <svg viewBox="0 0 80 120" fill="none" className="absolute right-10 top-10 w-32 h-32 opacity-8">
+      <section className={`relative pt-32 pb-24 px-6 bg-gradient-to-br ${v.heroColor} text-white overflow-hidden min-h-[60vh] flex items-end`}>
+        {/* Hero image overlay */}
+        {v.heroImage && (
+          <>
+            <Image
+              src={v.heroImage}
+              alt={v.name}
+              fill
+              className="object-cover mix-blend-overlay opacity-30"
+              sizes="100vw"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+          </>
+        )}
+
+        {/* Leaf watermark */}
+        <svg viewBox="0 0 80 120" fill="none" className="absolute right-10 top-10 w-32 h-32 opacity-[0.07]">
           <path d="M40 116 C40 116 4 80 4 44 C4 20 20 4 40 4 C60 4 76 20 76 44 C76 80 40 116 40 116Z" fill="white"/>
         </svg>
-        <div className="max-w-3xl mx-auto relative">
+
+        <div className="max-w-3xl mx-auto relative w-full">
           <span className="inline-block bg-white/15 backdrop-blur-sm text-white text-xs tracking-widest uppercase font-[family-name:var(--font-lato)] px-3 py-1 rounded-full border border-white/25 mb-5">
             {v.badge}
           </span>
@@ -212,14 +245,14 @@ export default function VentureDetailPage({ params }: { params: { slug: string }
             >
               {isExpedition ? 'Plan an Expedition' : 'Enquire & Book'}
             </Link>
-            <a
-              href="https://wa.me/919999999999"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-white/50 px-8 py-3 text-white font-[family-name:var(--font-lato)] hover:bg-white/10 transition-colors"
-            >
-              WhatsApp Us
-            </a>
+            {v.contact?.phone && (
+              <a
+                href={`tel:${v.contact.phone.replace(/\s/g, '')}`}
+                className="rounded-full border border-white/50 px-8 py-3 text-white font-[family-name:var(--font-lato)] hover:bg-white/10 transition-colors"
+              >
+                {v.contact.phone}
+              </a>
+            )}
             {v.externalLink && (
               <a
                 href={v.externalLink}
@@ -234,8 +267,29 @@ export default function VentureDetailPage({ params }: { params: { slug: string }
         </div>
       </section>
 
+      {/* Gallery (if photos available) */}
+      {v.galleryImages && v.galleryImages.length > 0 && (
+        <section className="py-12 px-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 gap-4">
+            {v.galleryImages.map((img, i) => (
+              <ScrollReveal key={img.src} delay={i * 100} className={i === 0 ? 'col-span-2 md:col-span-1 md:row-span-2' : ''}>
+                <div className={`relative rounded-2xl overflow-hidden ${i === 0 ? 'h-64 md:h-full' : 'h-48'}`}>
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Introduction */}
-      <section className="py-20 px-6 max-w-3xl mx-auto">
+      <section className="py-16 px-6 max-w-3xl mx-auto">
         <ScrollReveal>
           {v.intro.map((para, i) => (
             <p
@@ -292,9 +346,12 @@ export default function VentureDetailPage({ params }: { params: { slug: string }
               {(v.accommodation || v.expeditions)!.map((item, i) => (
                 <ScrollReveal key={item.title} delay={i * 90}>
                   <div className="bg-white/10 rounded-2xl p-6 border border-white/10">
-                    <h3 className="font-[family-name:var(--font-playfair)] text-base font-semibold text-[var(--wsv-gold)] mb-2">
+                    <h3 className="font-[family-name:var(--font-playfair)] text-base font-semibold text-[var(--wsv-gold)] mb-1">
                       {item.title}
                     </h3>
+                    {'price' in item && (item as { price?: string }).price && (
+                      <p className="font-[family-name:var(--font-lato)] text-xs text-white/50 mb-2">{(item as { price?: string }).price}</p>
+                    )}
                     <p className="font-[family-name:var(--font-lato)] text-gray-300 text-sm leading-6">
                       {item.desc}
                     </p>
@@ -306,6 +363,65 @@ export default function VentureDetailPage({ params }: { params: { slug: string }
         </section>
       )}
 
+      {/* Contact info (if available) */}
+      {v.contact && (
+        <section className="py-16 px-6 max-w-5xl mx-auto">
+          <ScrollReveal>
+            <div className="bg-white rounded-2xl p-8 border border-[var(--wsv-forest)]/8 shadow-sm flex flex-wrap gap-8 items-start">
+              <div>
+                <p className="text-xs tracking-widest uppercase text-[var(--wsv-sage)] font-[family-name:var(--font-lato)] mb-3">Get In Touch</p>
+                <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-[var(--wsv-forest)] mb-4">
+                  {v.name}
+                </h3>
+                <div className="space-y-2 font-[family-name:var(--font-lato)] text-sm text-gray-500">
+                  {v.contact.phone && (
+                    <p>
+                      <a href={`tel:${v.contact.phone.replace(/\s/g,'')}`} className="hover:text-[var(--wsv-forest)] transition-colors">
+                        📞 {v.contact.phone}
+                      </a>
+                      {v.contact.phone2 && (
+                        <> &nbsp;/&nbsp; <a href={`tel:${v.contact.phone2.replace(/\s/g,'')}`} className="hover:text-[var(--wsv-forest)] transition-colors">{v.contact.phone2}</a></>
+                      )}
+                    </p>
+                  )}
+                  {v.contact.email && (
+                    <p>
+                      <a href={`mailto:${v.contact.email}`} className="hover:text-[var(--wsv-forest)] transition-colors">
+                        ✉️ {v.contact.email}
+                      </a>
+                    </p>
+                  )}
+                  {v.contact.address && (
+                    <p>📍 {v.contact.address}</p>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-3 ml-auto items-center">
+                <a
+                  href="https://wa.me/919380299571"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-[#25D366] px-6 py-2.5 text-white font-semibold text-sm font-[family-name:var(--font-lato)] hover:bg-[#20b956] transition-colors"
+                >
+                  WhatsApp →
+                </a>
+                {v.externalLink && (
+                  <a
+                    href={v.externalLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-[var(--wsv-forest)]/30 px-6 py-2.5 text-[var(--wsv-forest)] text-sm font-[family-name:var(--font-lato)] hover:bg-[var(--wsv-forest)]/5 transition-colors"
+                  >
+                    Visit Website ↗
+                  </a>
+                )}
+              </div>
+            </div>
+          </ScrollReveal>
+        </section>
+      )}
+
       {/* Bottom CTA */}
       <section className="py-20 px-6 text-center">
         <ScrollReveal>
@@ -313,7 +429,7 @@ export default function VentureDetailPage({ params }: { params: { slug: string }
             Ready to Experience {v.name}?
           </h2>
           <p className="font-[family-name:var(--font-lato)] text-gray-500 mb-8 max-w-sm mx-auto text-sm leading-6">
-            Reach out to us to check availability, ask questions, or start planning your stay.
+            Reach out to check availability, ask questions, or start building your itinerary.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

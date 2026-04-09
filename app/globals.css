@@ -137,3 +137,26 @@ h1, h2, h3, h4 {
   animation: trailGrow linear both;
   animation-timeline: scroll();
 }
+
+/* ── Jeep dust particle ─────────────────────────────────────── */
+@keyframes dustFloat {
+  0%   { opacity: 0.3; transform: translate(0, 0) scale(1);   }
+  100% { opacity: 0;   transform: translate(-18px, -8px) scale(0.4); }
+}
+.animate-dust-particle {
+  animation: dustFloat 0.7s ease-out forwards;
+}
+
+/* ── Scrollbar hide (journey card scroll area) ──────────────── */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Card wipe reveal ───────────────────────────────────────── */
+@keyframes wipeReveal {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+.wipe-reveal {
+  animation: wipeReveal 0.7s ease-out forwards;
+  transform-origin: right;
+}
