@@ -88,7 +88,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-3 text-sm text-gray-300 font-[family-name:var(--font-lato)]">
             <li>
               <a
-                href="https://wa.me/919999999999"
+                href="https://wa.me/919682716827"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-white transition-colors"
@@ -101,13 +101,14 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="mailto:hello@wildspirit.in" className="hover:text-white transition-colors">
-                hello@wildspirit.in
+              <a href="mailto:jaideep@wildspiritstays.com" className="hover:text-white transition-colors">
+                jaideep@wildspiritstays.com
               </a>
             </li>
-            <li className="leading-5">
-              India&apos;s Central Wildlife Corridor<br />
-              Tadoba · Pench · Beyond
+            <li className="leading-6">
+              Central India Wildlife Corridor<br />
+              233 BL Saha Road, Merlin Verve<br />
+              Kolkata 700053
             </li>
           </ul>
         </div>

@@ -44,6 +44,7 @@ const ventures = [
     ],
     cta: 'Discover Jonaki Pench',
     accent: 'from-[#3A5C28] to-[#4A7A30]',
+    comingSoon: true,
   },
   {
     slug: 'fly-unfettered',
@@ -61,6 +62,7 @@ const ventures = [
     ],
     cta: 'Plan an Expedition',
     accent: 'from-[#4A3C1E] to-[#6B5520]',
+    comingSoon: true,
   },
 ];
 
@@ -92,9 +94,16 @@ export default function VenturesPage() {
           <ScrollReveal key={v.slug} delay={i * 100}>
             <div className="bg-white rounded-3xl overflow-hidden border border-[var(--wsv-forest)]/8 shadow-sm hover:shadow-lg transition-shadow duration-500">
               <div className={`h-56 bg-gradient-to-br ${v.accent} relative flex items-end p-8`}>
-                <span className="absolute top-5 left-5 bg-white/20 backdrop-blur-sm text-white text-xs tracking-widest uppercase font-[family-name:var(--font-lato)] px-3 py-1 rounded-full border border-white/30">
-                  {v.badge}
-                </span>
+                <div className="absolute top-5 left-5 flex items-center gap-2">
+                  <span className="bg-white/20 backdrop-blur-sm text-white text-xs tracking-widest uppercase font-[family-name:var(--font-lato)] px-3 py-1 rounded-full border border-white/30">
+                    {v.badge}
+                  </span>
+                  {v.comingSoon && (
+                    <span className="bg-[var(--wsv-gold)] text-[var(--wsv-dark)] text-xs font-bold tracking-widest uppercase font-[family-name:var(--font-lato)] px-3 py-1 rounded-full">
+                      Coming Soon
+                    </span>
+                  )}
+                </div>
                 {/* Decorative leaf */}
                 <svg viewBox="0 0 80 120" fill="none" className="absolute right-8 top-8 w-16 h-16 opacity-10">
                   <path d="M40 116 C40 116 4 80 4 44 C4 20 20 4 40 4 C60 4 76 20 76 44 C76 80 40 116 40 116Z" fill="white"/>
@@ -112,12 +121,18 @@ export default function VenturesPage() {
                     {v.desc}
                   </p>
                   <div className="mt-6 flex flex-wrap gap-3">
+                    {v.comingSoon ? (
+                      <span className="rounded-full bg-gray-200 px-6 py-2.5 text-sm font-semibold text-gray-400 font-[family-name:var(--font-lato)] cursor-not-allowed">
+                        Coming Soon
+                      </span>
+                    ) : (
                     <Link
                       href={`/ventures/${v.slug}`}
                       className="rounded-full bg-[var(--wsv-forest)] px-6 py-2.5 text-sm font-semibold text-[var(--wsv-cream)] hover:bg-[var(--wsv-earth)] transition-colors font-[family-name:var(--font-lato)]"
                     >
                       {v.cta}
                     </Link>
+                    )}
                     {v.externalLink && (
                       <a
                         href={v.externalLink}

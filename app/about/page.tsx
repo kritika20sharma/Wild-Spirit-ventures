@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
@@ -58,14 +59,15 @@ export default function AboutPage() {
       <section className="py-20 px-6 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <ScrollReveal direction="left">
-            {/* Image placeholder */}
-            <div className="h-96 rounded-2xl bg-gradient-to-br from-[var(--wsv-forest)] to-[var(--wsv-sage)] flex items-center justify-center overflow-hidden">
-              <svg viewBox="0 0 80 120" fill="none" className="w-24 h-24 opacity-20">
-                <path d="M40 116 C40 116 4 80 4 44 C4 20 20 4 40 4 C60 4 76 20 76 44 C76 80 40 116 40 116Z" fill="white"/>
-                <line x1="40" y1="116" x2="40" y2="50" stroke="white" strokeWidth="2"/>
-                <line x1="40" y1="80" x2="20" y2="60" stroke="white" strokeWidth="1.5"/>
-                <line x1="40" y1="65" x2="60" y2="45" stroke="white" strokeWidth="1.5"/>
-              </svg>
+            <div className="relative h-96 rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/staff.jpg"
+                alt="Wild Spirit Ventures team in the jungle"
+                fill
+                className="object-cover animate-breathe"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--wsv-forest)]/30 to-transparent" />
             </div>
           </ScrollReveal>
 

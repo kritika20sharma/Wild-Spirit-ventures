@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 
 export default function StickyCTA() {
   const [visible, setVisible] = useState(false);
@@ -15,7 +14,7 @@ export default function StickyCTA() {
     <>
       {/* Floating WhatsApp button */}
       <a
-        href="https://wa.me/919999999999?text=Hi%2C%20I%27m%20interested%20in%20booking%20a%20safari%20with%20Wild%20Spirit%20Ventures."
+        href="https://wa.me/919682716827?text=Hi%2C%20I%27m%20interested%20in%20booking%20a%20safari%20with%20Wild%20Spirit%20Ventures."
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"

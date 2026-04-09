@@ -83,6 +83,7 @@ const stops = [
     state: 'Turiya Road, Kohka, Madhya Pradesh 480881',
     badge: 'Boutique Eco',
     badgeColor: 'bg-[var(--wsv-sage)]',
+    comingSoon: true,
     tagline: 'The Jungle Book comes alive.',
     desc: 'Boutique eco-stays woven into the teak forests of Pench — the forest that inspired Rudyard Kipling\'s Jungle Book. Dholes, leopards, tigers and extraordinary birding, all in an unhurried, intimate setting that rewards those who slow down.',
     image: null,
@@ -107,6 +108,7 @@ const stops = [
     state: 'Satpura · Sahyadri · And Beyond',
     badge: 'Expeditions',
     badgeColor: 'bg-[var(--wsv-earth)]',
+    comingSoon: true,
     tagline: 'Beyond the boundary — into the unknown.',
     desc: 'For those for whom a resort isn\'t enough. Expert-led multi-day treks, off-trail wilderness expeditions and adventure journeys across India\'s most remote landscapes. Certified guides, small groups, zero compromise on safety — and pure, unfiltered wildness.',
     image: null,
@@ -289,7 +291,7 @@ export default function JourneyScroll() {
                   <div className="w-full max-w-3xl">
 
                     {/* Stop label */}
-                    <div className="flex items-center gap-3 mb-5">
+                    <div className="flex items-center gap-3 mb-5 flex-wrap">
                       <div className="w-6 h-6 rounded-full bg-[var(--wsv-gold)]/15 flex items-center justify-center">
                         <span className="text-[10px] font-bold text-[var(--wsv-gold)] font-[family-name:var(--font-lato)]">
                           {String(i + 1).padStart(2, '0')}
@@ -298,6 +300,11 @@ export default function JourneyScroll() {
                       <span className={`text-xs px-3 py-1 rounded-full text-white font-[family-name:var(--font-lato)] tracking-widest uppercase ${stop.badgeColor}`}>
                         {stop.badge}
                       </span>
+                      {stop.comingSoon && (
+                        <span className="text-xs px-3 py-1 rounded-full bg-[var(--wsv-gold)] text-[var(--wsv-dark)] font-bold font-[family-name:var(--font-lato)] tracking-widest uppercase">
+                          Coming Soon
+                        </span>
+                      )}
                     </div>
 
                     {/* Name + tagline */}
@@ -403,12 +410,18 @@ export default function JourneyScroll() {
 
                     {/* Actions */}
                     <div className="flex flex-wrap items-center gap-4">
+                      {stop.comingSoon ? (
+                        <span className="rounded-full bg-gray-200 px-7 py-2.5 text-sm font-semibold text-gray-400 font-[family-name:var(--font-lato)] cursor-not-allowed">
+                          Coming Soon
+                        </span>
+                      ) : (
                       <Link
                         href={`/ventures/${stop.slug}`}
                         className="rounded-full bg-[var(--wsv-forest)] px-7 py-2.5 text-sm font-semibold text-[var(--wsv-cream)] hover:bg-[var(--wsv-earth)] transition-colors font-[family-name:var(--font-lato)]"
                       >
                         Discover More →
                       </Link>
+                      )}
                       {stop.externalLink && (
                         <a
                           href={stop.externalLink}

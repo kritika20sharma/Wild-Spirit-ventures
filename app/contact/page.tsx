@@ -54,7 +54,7 @@ export default function ContactPage() {
           <ScrollReveal direction="left">
             {/* WhatsApp */}
             <a
-              href="https://wa.me/919999999999?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20safari%20with%20Wild%20Spirit%20Ventures."
+              href="https://wa.me/919682716827?text=Hi%2C%20I%27d%20like%20to%20plan%20a%20safari%20with%20Wild%20Spirit%20Ventures."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-start gap-4 p-6 rounded-2xl bg-[#25D366]/10 border border-[#25D366]/30 hover:bg-[#25D366]/15 transition-colors group"
@@ -73,7 +73,7 @@ export default function ContactPage() {
                   Fastest way to reach us. We&apos;re usually in the field but always connected.
                 </p>
                 <p className="font-[family-name:var(--font-lato)] text-sm font-semibold text-[#25D366] mt-2">
-                  +91 99999 99999 →
+                  +91 96827 16827 →
                 </p>
               </div>
             </a>
@@ -84,10 +84,10 @@ export default function ContactPage() {
               <div>
                 <p className="font-[family-name:var(--font-playfair)] font-semibold text-[var(--wsv-forest)] mb-1">Email</p>
                 <a
-                  href="mailto:hello@wildspirit.in"
+                  href="mailto:jaideep@wildspiritstays.com"
                   className="font-[family-name:var(--font-lato)] text-sm text-[var(--wsv-sage)] hover:text-[var(--wsv-forest)] transition-colors"
                 >
-                  hello@wildspirit.in
+                  jaideep@wildspiritstays.com
                 </a>
               </div>
               <div>
@@ -95,7 +95,7 @@ export default function ContactPage() {
                   Operating Areas
                 </p>
                 <p className="font-[family-name:var(--font-lato)] text-sm text-gray-500 leading-6">
-                  Tadoba · Pench · Pan-India Expeditions
+                  Central India Wildlife Corridor
                 </p>
               </div>
               <div>
@@ -126,7 +126,7 @@ export default function ContactPage() {
                   feel free to WhatsApp us for a faster reply.
                 </p>
                 <a
-                  href="https://wa.me/919999999999"
+                  href="https://wa.me/919682716827"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-2 rounded-full bg-[#25D366] px-8 py-3 text-white font-semibold font-[family-name:var(--font-lato)] text-sm hover:bg-[#20b956] transition-colors"
@@ -228,7 +228,7 @@ export default function ContactPage() {
                 <p className="text-xs text-center text-gray-400 font-[family-name:var(--font-lato)]">
                   Or reach us directly on{' '}
                   <a
-                    href="https://wa.me/919999999999"
+                    href="https://wa.me/919682716827"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#25D366] font-semibold"

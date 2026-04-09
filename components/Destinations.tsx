@@ -22,6 +22,7 @@ const ventures = [
     badge: 'Boutique Eco',
     color: 'from-[#3A5C28]/80',
     image: null,
+    comingSoon: true,
   },
   {
     slug: 'fly-unfettered',
@@ -32,6 +33,7 @@ const ventures = [
     badge: 'Expeditions',
     color: 'from-[#4A3C1E]/80',
     image: null,
+    comingSoon: true,
   },
 ];
 
@@ -72,9 +74,16 @@ export default function Destinations() {
                     <path d="M40 116 C40 116 4 80 4 44 C4 20 20 4 40 4 C60 4 76 20 76 44 C76 80 40 116 40 116Z" fill="white"/>
                   </svg>
                 )}
-                <span className="absolute top-4 left-4 z-10 bg-white/20 backdrop-blur-sm text-white text-xs tracking-widest uppercase font-[family-name:var(--font-lato)] px-3 py-1 rounded-full border border-white/30">
-                  {v.badge}
-                </span>
+                <div className="absolute top-4 left-4 z-10 flex gap-2 flex-wrap">
+                  <span className="bg-white/20 backdrop-blur-sm text-white text-xs tracking-widest uppercase font-[family-name:var(--font-lato)] px-3 py-1 rounded-full border border-white/30">
+                    {v.badge}
+                  </span>
+                  {v.comingSoon && (
+                    <span className="bg-[var(--wsv-gold)] text-[var(--wsv-dark)] text-xs font-bold tracking-widest uppercase font-[family-name:var(--font-lato)] px-3 py-1 rounded-full">
+                      Coming Soon
+                    </span>
+                  )}
+                </div>
               </div>
 
               <div className="p-6 flex flex-col flex-1">
@@ -90,15 +99,21 @@ export default function Destinations() {
                 <p className="font-[family-name:var(--font-lato)] text-sm text-gray-500 leading-6 flex-1">
                   {v.desc}
                 </p>
-                <Link
-                  href={`/ventures/${v.slug}`}
-                  className="mt-5 inline-flex items-center gap-2 rounded-full border border-[var(--wsv-forest)] px-6 py-2.5 text-sm font-semibold text-[var(--wsv-forest)] hover:bg-[var(--wsv-forest)] hover:text-[var(--wsv-cream)] transition-all duration-300 font-[family-name:var(--font-lato)] group-hover:border-[var(--wsv-forest)]"
-                >
-                  Discover More
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </Link>
+                {v.comingSoon ? (
+                  <span className="mt-5 inline-flex items-center gap-2 rounded-full border border-gray-200 px-6 py-2.5 text-sm font-semibold text-gray-400 font-[family-name:var(--font-lato)] cursor-not-allowed">
+                    Coming Soon
+                  </span>
+                ) : (
+                  <Link
+                    href={`/ventures/${v.slug}`}
+                    className="mt-5 inline-flex items-center gap-2 rounded-full border border-[var(--wsv-forest)] px-6 py-2.5 text-sm font-semibold text-[var(--wsv-forest)] hover:bg-[var(--wsv-forest)] hover:text-[var(--wsv-cream)] transition-all duration-300 font-[family-name:var(--font-lato)] group-hover:border-[var(--wsv-forest)]"
+                  >
+                    Discover More
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </Link>
+                )}
               </div>
             </div>
           </ScrollReveal>
