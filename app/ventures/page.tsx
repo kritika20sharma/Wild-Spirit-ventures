@@ -27,6 +27,7 @@ const ventures = [
     cta: 'Visit Footprint Jungle Resort',
     accent: 'from-[#2C4A1E] to-[#3A6B24]',
     externalLink: 'https://www.footprintjungleresort.com',
+    video: '/resort-reel.mov',
   },
   {
     slug: 'jonaki-pench',
@@ -114,6 +115,21 @@ export default function VenturesPage() {
                   <p className="font-[family-name:var(--font-playfair)] italic text-[var(--wsv-gold)] text-sm mt-0.5">{v.tagline}</p>
                 </div>
               </div>
+
+              {v.video && (
+                <div className="relative w-full overflow-hidden bg-black" style={{ aspectRatio: '16/9' }}>
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover"
+                  >
+                    <source src={v.video} type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+                </div>
+              )}
 
               <div className="p-8 grid md:grid-cols-3 gap-8">
                 <div className="md:col-span-2">

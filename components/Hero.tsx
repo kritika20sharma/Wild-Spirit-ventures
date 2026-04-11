@@ -19,12 +19,24 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
 
-      {/* ── Parallax background ── */}
+      {/* ── Parallax background — video ── */}
       <div
         ref={bgRef}
-        className="absolute inset-0 -top-16 -bottom-16 bg-[url('/brand-hero.jpg')] bg-cover bg-center will-change-transform"
+        className="absolute inset-0 -top-16 -bottom-16 will-change-transform"
         aria-hidden="true"
-      />
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/resort-reel.mov" type="video/mp4" />
+          {/* Fallback image if video fails */}
+          <div className="w-full h-full bg-[url('/brand-hero.jpg')] bg-cover bg-center" />
+        </video>
+      </div>
 
       {/* Gradient overlay — darker at top for nav legibility, lighter at bottom */}
       <div

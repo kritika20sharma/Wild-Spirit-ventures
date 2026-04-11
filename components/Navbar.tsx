@@ -14,26 +14,21 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--wsv-cream)]/95 backdrop-blur-md border-b border-[var(--wsv-forest)]/10">
-      <div className="flex items-center justify-between px-6 md:px-10 py-3">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--wsv-cream)]/95 backdrop-blur-md border-b border-[var(--wsv-forest)]/10" style={{ height: '9rem' }}>
+      <div className="flex items-center justify-between px-10 md:px-20 h-full">
 
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <div className="relative w-11 h-11">
+        {/* Logo — oversized, anchored top-left, overflows navbar */}
+        <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+          <div className="relative" style={{ height: '9rem', width: '36rem' }}>
             <Image
-              src="/wildspirit-logo.jpg"
+              src="/wsv-logo-new.png"
               alt="Wild Spirit Ventures"
               fill
-              className="object-contain"
+              className="object-contain object-left"
               priority
+              style={{ mixBlendMode: 'multiply' }}
             />
           </div>
-          <span className="font-[family-name:var(--font-playfair)] text-base font-bold text-[var(--wsv-forest)] leading-tight hidden sm:block">
-            Wild Spirit<br />
-            <span className="text-xs font-normal tracking-[0.2em] uppercase text-[var(--wsv-earth)]">
-              Ventures
-            </span>
-          </span>
         </Link>
 
         {/* Desktop nav */}
@@ -42,14 +37,14 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm tracking-wide font-[family-name:var(--font-lato)] text-[var(--wsv-dark)] hover:text-[var(--wsv-forest)] transition-colors duration-300"
+              className="text-base tracking-wide font-[family-name:var(--font-lato)] text-[var(--wsv-dark)] hover:text-[var(--wsv-forest)] transition-colors duration-300"
             >
               {link.label}
             </Link>
           ))}
           <Link
             href="/contact"
-            className="ml-2 rounded-full bg-[var(--wsv-forest)] px-5 py-2 text-sm font-semibold text-[var(--wsv-cream)] hover:bg-[var(--wsv-earth)] transition-colors duration-300 font-[family-name:var(--font-lato)]"
+            className="ml-2 rounded-full bg-[var(--wsv-forest)] px-6 py-2.5 text-base font-semibold text-[var(--wsv-cream)] hover:bg-[var(--wsv-earth)] transition-colors duration-300 font-[family-name:var(--font-lato)]"
           >
             Plan Your Stay
           </Link>

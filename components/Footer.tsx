@@ -22,17 +22,20 @@ export default function Footer() {
         {/* Brand */}
         <div className="md:col-span-1 flex flex-col gap-4">
           <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white/10">
+            <div className="relative w-16 h-10 shrink-0">
               <Image
-                src="/wildspirit-logo.jpg"
+                src="/wsv-logo-new.png"
                 alt="Wild Spirit Ventures"
                 fill
                 className="object-contain"
+                style={{ filter: 'brightness(0) invert(1)' }}
               />
             </div>
-            <span className="font-[family-name:var(--font-playfair)] text-base font-bold leading-tight">
-              Wild Spirit<br />
-              <span className="text-xs font-normal tracking-[0.2em] uppercase text-[var(--wsv-gold)]">
+            <span className="flex flex-col leading-none">
+              <span className="font-[family-name:var(--font-playfair)] text-[1.05rem] font-bold text-white tracking-tight">
+                Wild Spirit
+              </span>
+              <span className="font-[family-name:var(--font-playfair)] text-[0.6rem] font-normal tracking-[0.38em] uppercase text-[var(--wsv-gold)] mt-0.5">
                 Ventures
               </span>
             </span>
@@ -106,7 +109,6 @@ export default function Footer() {
               </a>
             </li>
             <li className="leading-6">
-              Central India Wildlife Corridor<br />
               233 BL Saha Road, Merlin Verve<br />
               Kolkata 700053
             </li>
