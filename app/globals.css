@@ -20,7 +20,7 @@
 
 /* ── Base ─────────────────────────────────────────────────── */
 body {
-  background: var(--background);
+  background: transparent;
   color: var(--foreground);
   font-family: 'Lato', Arial, sans-serif;
 }

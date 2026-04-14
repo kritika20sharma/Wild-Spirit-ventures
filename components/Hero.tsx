@@ -1,70 +1,47 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
 
 export default function Hero() {
-  const bgRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Subtle parallax — background scrolls at 40% of page scroll speed
-  useEffect(() => {
-    const onScroll = () => {
-      if (bgRef.current) {
-        bgRef.current.style.transform = `translateY(${window.scrollY * 0.4}px)`;
-      }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  // Skip first 5 seconds so branded/text frames are never shown
+  const handleCanPlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.currentTime < 5) {
+      video.currentTime = 5;
+    }
+    video.play().catch(() => {});
+  };
 
   return (
-    <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
+    <section className="relative h-screen overflow-hidden flex items-center justify-center bg-[#1a2e12]">
 
-      {/* ── Parallax background — video ── */}
-      <div
-        ref={bgRef}
-        className="absolute inset-0 -top-16 -bottom-16 will-change-transform"
-        aria-hidden="true"
-      >
+      {/* ── Full-bleed video — slightly zoomed so no edge gaps ── */}
+      <div className="absolute inset-0" aria-hidden="true">
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover"
+          onCanPlay={handleCanPlay}
+          className="w-full h-full object-cover object-center"
+          style={{ transform: 'scale(1.08)', transformOrigin: 'center center' }}
         >
           <source src="/resort-reel.mov" type="video/mp4" />
-          {/* Fallback image if video fails */}
-          <div className="w-full h-full bg-[url('/brand-hero.jpg')] bg-cover bg-center" />
         </video>
       </div>
 
-      {/* Gradient overlay — darker at top for nav legibility, lighter at bottom */}
+      {/* Gradient overlay */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/60"
+        className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-black/55"
         aria-hidden="true"
       />
 
       {/* ── Content ── */}
-      <div className="relative z-10 mx-auto max-w-3xl px-6 text-center text-white pt-20">
-
-        {/* Eye-of-a-tree logo mark (SVG from brand) */}
-        <div className="flex justify-center mb-5">
-          <svg
-            viewBox="0 0 80 80"
-            fill="none"
-            className="w-14 h-14 animate-leaf-sway opacity-80"
-            aria-hidden="true"
-          >
-            <circle cx="40" cy="40" r="38" stroke="rgba(201,168,76,0.5)" strokeWidth="1.5"/>
-            {/* Simplified tree silhouette */}
-            <path
-              d="M40 70 L40 42 M40 42 C40 42 28 35 25 25 C22 15 30 8 40 10 C50 8 58 15 55 25 C52 35 40 42 40 42Z"
-              stroke="rgba(201,168,76,0.7)"
-              strokeWidth="1.5"
-              fill="none"
-            />
-          </svg>
-        </div>
+      <div className="relative z-10 mx-auto max-w-3xl px-6 text-center text-white">
 
         <p className="animate-fade-up fade-up-delay-1 mb-3 text-xs tracking-[0.35em] uppercase text-[var(--wsv-gold)] font-[family-name:var(--font-lato)]">
           Wild Spirit Ventures
@@ -114,7 +91,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Floating leaf accents ── */}
+      {/* Floating leaf accents */}
       <div className="absolute bottom-12 left-8 w-10 h-10 opacity-25 animate-leaf-sway" aria-hidden="true">
         <svg viewBox="0 0 40 60" fill="none">
           <path d="M20 58 C20 58 2 40 2 22 C2 10 10 2 20 2 C30 2 38 10 38 22 C38 40 20 58 20 58Z" fill="white"/>

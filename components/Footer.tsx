@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 const ventures = [
   { label: 'Footprint Jungle Resort', href: '/ventures/footprint-jungle-resort' },
-  { label: 'Jonaki Pench',            href: '/ventures/jonaki-pench'            },
-  { label: 'Fly Unfettered',          href: '/ventures/fly-unfettered'          },
+  { label: 'Venture II · Coming Soon', href: '/contact'                         },
+  { label: 'Venture III · Coming Soon', href: '/contact'                        },
 ];
 
 const links = [
@@ -21,10 +21,10 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="md:col-span-1 flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <div className="relative w-16 h-10 shrink-0">
+          <div className="flex items-center gap-4">
+            <div className="relative w-12 h-16 shrink-0">
               <Image
-                src="/wsv-logo-new.png"
+                src="/tree-logo.png"
                 alt="Wild Spirit Ventures"
                 fill
                 className="object-contain"

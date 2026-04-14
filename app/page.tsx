@@ -8,7 +8,7 @@ import CTA from '@/components/CTA';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-[var(--wsv-cream)]">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex flex-col w-full">
         <Hero />
