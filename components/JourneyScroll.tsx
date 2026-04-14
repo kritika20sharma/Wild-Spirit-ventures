@@ -3,53 +3,6 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// ── Jeep SVG ───────────────────────────────────────────────────
-function JeepIcon({ className = '' }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 80 44"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      {/* Body */}
-      <rect x="4" y="14" width="72" height="22" rx="4" fill="#2C4A1E" />
-      {/* Cab roof */}
-      <path d="M16 14 L24 4 L56 4 L64 14Z" fill="#2C4A1E" />
-      {/* Windshield */}
-      <path d="M26 5 L24.5 13 L55.5 13 L54 5Z" fill="#C9A84C" opacity="0.6" />
-      {/* Side window */}
-      <rect x="18" y="5" width="6" height="8" rx="1" fill="#C9A84C" opacity="0.4" />
-      {/* Front */}
-      <rect x="68" y="18" width="6" height="10" rx="2" fill="#3A5C28" />
-      {/* Headlight */}
-      <rect x="72" y="20" width="3" height="4" rx="1" fill="#C9A84C" />
-      {/* Rear */}
-      <rect x="6" y="18" width="4" height="10" rx="2" fill="#1A2E10" />
-      {/* Wheels */}
-      <circle cx="20" cy="36" r="7" fill="#1A1A1A" />
-      <circle cx="20" cy="36" r="3.5" fill="#555" />
-      <circle cx="60" cy="36" r="7" fill="#1A1A1A" />
-      <circle cx="60" cy="36" r="3.5" fill="#555" />
-      {/* Spare tyre hint */}
-      <circle cx="8" cy="30" r="4" fill="#1A1A1A" opacity="0.6" />
-      {/* Roll cage bars */}
-      <line x1="32" y1="4" x2="32" y2="14" stroke="#C9A84C" strokeWidth="1.5" opacity="0.5" />
-      <line x1="48" y1="4" x2="48" y2="14" stroke="#C9A84C" strokeWidth="1.5" opacity="0.5" />
-    </svg>
-  );
-}
-
-// ── Dust trail particles ────────────────────────────────────────
-function DustParticle({ style }: { style: React.CSSProperties }) {
-  return (
-    <div
-      className="absolute rounded-full bg-[var(--wsv-earth)] animate-dust-particle"
-      style={style}
-    />
-  );
-}
-
 // ── Venture stop data ───────────────────────────────────────────
 const stops = [
   {
@@ -135,7 +88,6 @@ export default function JourneyScroll() {
   const [jeepProgress, setJeepProgress] = useState(0);
   const [activeStop, setActiveStop] = useState(-1);
   const stopRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [dustKey, setDustKey] = useState(0);
   const lastProgress = useRef(0);
 
   const onScroll = useCallback(() => {
@@ -147,10 +99,6 @@ export default function JourneyScroll() {
     const rawProgress = Math.max(0, Math.min(1, -rect.top / scrollable));
     setJeepProgress(rawProgress);
 
-    // Trigger dust when moving
-    if (Math.abs(rawProgress - lastProgress.current) > 0.008) {
-      setDustKey((k) => k + 1);
-    }
     lastProgress.current = rawProgress;
 
     // Which stop is closest to viewport center
@@ -241,36 +189,12 @@ export default function JourneyScroll() {
             );
           })}
 
-          {/* Jeep */}
+          {/* Tiger scroller */}
           <div
             className="absolute left-1/2 -translate-x-1/2 transition-none z-10"
             style={{ top: jeepTop, transform: 'translate(-50%, -50%)' }}
           >
-            {/* Dust particles */}
-            <div className="absolute -bottom-2 -left-8 pointer-events-none" key={dustKey}>
-              {[...Array(4)].map((_, i) => (
-                <DustParticle
-                  key={i}
-                  style={{
-                    width: `${4 + i * 2}px`,
-                    height: `${4 + i * 2}px`,
-                    left: `-${i * 6}px`,
-                    bottom: `${i * 2}px`,
-                    opacity: 0.3 - i * 0.06,
-                    animationDelay: `${i * 0.1}s`,
-                  }}
-                />
-              ))}
-            </div>
-
-            <JeepIcon className="w-16 lg:w-20 drop-shadow-md" />
-
-            {/* Terrain label under jeep */}
-            {activeStop >= 0 && (
-              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[8px] tracking-widest uppercase text-[var(--wsv-earth)] font-[family-name:var(--font-lato)] opacity-70">
-                {stops[activeStop]?.terrain}
-              </div>
-            )}
+            <Image src="/tiger-transparent.png" alt="Tiger" width={72} height={72} className="object-contain" />
           </div>
         </div>
 
