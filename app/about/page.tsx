@@ -35,14 +35,14 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+      <section className="relative pt-20 md:pt-36 pb-20 px-6 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/brand-hero.jpg')] bg-cover bg-center opacity-10" aria-hidden="true"/>
         <div className="relative max-w-3xl mx-auto text-center">
           <ScrollReveal>
             <p className="text-xs tracking-[0.35em] uppercase text-[var(--wsv-sage)] font-[family-name:var(--font-lato)] mb-3">
               Who We Are
             </p>
-            <h1 className="font-[family-name:var(--font-playfair)] text-5xl md:text-6xl font-bold text-[var(--wsv-forest)] mb-6">
+            <h1 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-5xl md:text-6xl font-bold text-[var(--wsv-forest)] mb-6">
               Born From a Love<br />
               <span className="italic text-[var(--wsv-earth)]">of the Wild</span>
             </h1>

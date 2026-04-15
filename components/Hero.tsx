@@ -59,12 +59,12 @@ export default function Hero() {
           Wild Spirit Ventures
         </p>
 
-        <h1 className="animate-fade-up fade-up-delay-2 font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-bold leading-tight mb-6">
+        <h1 className="animate-fade-up fade-up-delay-2 font-[family-name:var(--font-playfair)] text-3xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6">
           Into the Wild,<br />
           <span className="italic text-[var(--wsv-gold)]">On Your Terms</span>
         </h1>
 
-        <p className="animate-fade-up fade-up-delay-3 font-[family-name:var(--font-lato)] text-lg text-gray-200 mb-10 max-w-xl mx-auto leading-relaxed">
+        <p className="animate-fade-up fade-up-delay-3 font-[family-name:var(--font-lato)] text-sm sm:text-lg text-gray-200 mb-8 sm:mb-10 max-w-xl mx-auto leading-relaxed">
           Curated safari stays across India&apos;s finest wildlife corridors.
           One brand you trust — multiple worlds to explore.
         </p>
@@ -85,7 +85,7 @@ export default function Hero() {
         </div>
 
         {/* Stats row */}
-        <div className="animate-fade-up fade-up-delay-4 mt-16 grid grid-cols-3 gap-6 border-t border-white/20 pt-8 max-w-md mx-auto">
+        <div className="animate-fade-up fade-up-delay-4 mt-10 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-6 border-t border-white/20 pt-6 sm:pt-8 max-w-xs sm:max-w-md mx-auto">
           {[
             { val: '3',    label: 'Destinations' },
             { val: '10+',  label: 'Years in Wild' },

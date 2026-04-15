@@ -30,18 +30,17 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 h-16 md:h-28 ${
         scrolled
           ? 'bg-[var(--wsv-cream)] border-b border-[var(--wsv-forest)]/10 shadow-sm'
           : 'bg-transparent border-b border-transparent'
       }`}
-      style={{ height: '12rem' }}
     >
-      <div className="flex items-center justify-between px-10 md:px-20 h-full">
+      <div className="flex items-center justify-between px-5 md:px-16 h-full">
 
         {/* Logo */}
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
-          <div className="relative" style={{ height: '12rem', width: '48rem' }}>
+          <div className="relative h-12 w-36 md:h-20 md:w-[22rem]">
             <Image
               src={transparent ? '/wsv-white-logo-text.png' : '/wsv-logo-new.png'}
               alt="Wild Spirit Ventures"

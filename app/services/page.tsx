@@ -120,12 +120,12 @@ export default function ServicesPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="pt-32 pb-16 px-6 text-center">
+      <section className="pt-20 md:pt-36 pb-16 px-6 text-center">
         <ScrollReveal>
           <p className="text-xs tracking-[0.35em] uppercase text-[var(--wsv-sage)] font-[family-name:var(--font-lato)] mb-3">
             What We Offer
           </p>
-          <h1 className="font-[family-name:var(--font-playfair)] text-5xl font-bold text-[var(--wsv-forest)] mb-5">
+          <h1 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-5xl font-bold text-[var(--wsv-forest)] mb-5">
             Experiences That<br />
             <span className="italic text-[var(--wsv-earth)]">Stay With You</span>
           </h1>

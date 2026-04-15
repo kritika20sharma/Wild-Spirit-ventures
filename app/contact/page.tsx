@@ -31,7 +31,7 @@ export default function ContactPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="pt-32 pb-16 px-6 text-center">
+      <section className="pt-20 md:pt-36 pb-16 px-6 text-center">
         <ScrollReveal>
           <p className="text-xs tracking-[0.35em] uppercase text-[var(--wsv-sage)] font-[family-name:var(--font-lato)] mb-3">
             Reach Out
@@ -47,7 +47,7 @@ export default function ContactPage() {
         </ScrollReveal>
       </section>
 
-      <section className="pb-24 px-6 max-w-6xl mx-auto grid md:grid-cols-5 gap-12">
+      <section className="pb-24 px-4 sm:px-6 max-w-6xl mx-auto grid md:grid-cols-5 gap-8 md:gap-12">
 
         {/* Contact info sidebar */}
         <div className="md:col-span-2 flex flex-col gap-8">
