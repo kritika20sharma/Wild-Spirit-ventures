@@ -25,7 +25,7 @@ const stops = [
     ],
     phone: '+91 93802 99571',
     email: 'tadobafootprintresort@gmail.com',
-    externalLink: 'https://tadobafootprintresort.com',
+    externalLink: 'https://tadobafootprintresort.com/',
     terrain: 'Tiger Reserve',
     trailColor: '#2C4A1E',
   },
@@ -360,8 +360,8 @@ export default function JourneyScroll() {
                         </div>
 
                         <div className="flex flex-wrap items-center gap-4">
-                          <Link href={`/ventures/${stop.slug}`} className="rounded-full bg-[var(--wsv-forest)] px-7 py-2.5 text-sm font-semibold text-[var(--wsv-cream)] hover:bg-[var(--wsv-earth)] transition-colors font-[family-name:var(--font-lato)]">
-                            Discover More →
+                          <Link href="/contact" className="rounded-full bg-[var(--wsv-forest)] px-7 py-2.5 text-sm font-semibold text-[var(--wsv-cream)] hover:bg-[var(--wsv-earth)] transition-colors font-[family-name:var(--font-lato)]">
+                            Visit Footprint Jungle Resort →
                           </Link>
                           {stop.externalLink && (
                             <a href={stop.externalLink} target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--wsv-sage)] font-[family-name:var(--font-lato)] hover:text-[var(--wsv-forest)] underline underline-offset-4">

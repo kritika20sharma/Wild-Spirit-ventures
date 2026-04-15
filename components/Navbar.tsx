@@ -11,7 +11,6 @@ const navLinks = [
   { label: 'Contact',      href: '/contact'   },
 ];
 
-const galleryLink = { label: 'Gallery', href: '/gallery' };
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -44,7 +43,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
           <div className="relative" style={{ height: '9rem', width: '36rem' }}>
             <Image
-              src="/wsv-logo-new.png"
+              src="/wsv-white-logo.png"
               alt="Wild Spirit Ventures"
               fill
               className="object-contain object-left transition-all duration-500"
@@ -70,14 +69,6 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          {/* Gallery — highlighted */}
-          <Link
-            href={galleryLink.href}
-            className="text-base tracking-wide font-semibold font-[family-name:var(--font-lato)] border-b-2 border-[var(--wsv-gold)] pb-0.5 transition-colors duration-300"
-            style={{ color: transparent ? 'var(--wsv-gold)' : '#000000' }}
-          >
-            {galleryLink.label}
-          </Link>
           <Link
             href="/contact"
             className={`ml-2 rounded-full px-6 py-2.5 text-base font-semibold transition-colors duration-300 font-[family-name:var(--font-lato)] ${
@@ -119,13 +110,6 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href={galleryLink.href}
-            onClick={() => setOpen(false)}
-            className="text-base font-semibold font-[family-name:var(--font-lato)] text-[var(--wsv-forest)] border-b border-[var(--wsv-gold)] pb-0.5 self-start"
-          >
-            {galleryLink.label}
-          </Link>
           <Link
             href="/contact"
             onClick={() => setOpen(false)}

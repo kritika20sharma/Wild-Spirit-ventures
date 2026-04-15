@@ -27,7 +27,7 @@ const ventures = [
     ],
     cta: 'Visit Footprint Jungle Resort',
     accent: 'from-[#2C4A1E] to-[#3A6B24]',
-    externalLink: 'https://www.footprintjungleresort.com',
+    externalLink: 'https://tadobafootprintresort.com/',
     video: '/resort-reel.mov',
     comingSoon: false,
     sealed: false,
@@ -217,7 +217,7 @@ export default function VenturesPage() {
                     <p className="font-[family-name:var(--font-lato)] text-gray-500 text-sm leading-7">{v.desc}</p>
                     <div className="mt-6 flex flex-wrap gap-3">
                       <Link
-                        href={`/ventures/${v.slug}`}
+                        href="/contact"
                         className="rounded-full bg-[var(--wsv-forest)] px-6 py-2.5 text-sm font-semibold text-[var(--wsv-cream)] hover:bg-[var(--wsv-earth)] transition-colors font-[family-name:var(--font-lato)]"
                       >
                         {v.cta}
