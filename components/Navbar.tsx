@@ -43,16 +43,12 @@ export default function Navbar() {
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
           <div className="relative" style={{ height: '9rem', width: '36rem' }}>
             <Image
-              src="/wsv-white-logo.png"
+              src={transparent ? '/wsv-white-logo.png' : '/wsv-logo-new.png'}
               alt="Wild Spirit Ventures"
               fill
               className="object-contain object-left transition-all duration-500"
               priority
-              style={
-                transparent
-                  ? { filter: 'brightness(0) invert(1)' }
-                  : { mixBlendMode: 'multiply' }
-              }
+              style={transparent ? {} : { mixBlendMode: 'multiply' }}
             />
           </div>
         </Link>

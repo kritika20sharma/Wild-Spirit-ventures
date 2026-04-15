@@ -18,8 +18,15 @@ export default function Hero() {
   return (
     <section className="relative h-screen overflow-hidden flex items-center justify-center bg-[#1a2e12]">
 
-      {/* ── Full-bleed video — slightly zoomed so no edge gaps ── */}
-      <div className="absolute inset-0" aria-hidden="true">
+      {/* ── Full-bleed video — zoomed in, no gaps at any edge ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: '-10%',
+          zIndex: 0,
+        }}
+      >
         <video
           ref={videoRef}
           autoPlay
@@ -27,8 +34,13 @@ export default function Hero() {
           loop
           playsInline
           onCanPlay={handleCanPlay}
-          className="w-full h-full object-cover object-center"
-          style={{ transform: 'scale(1.08)', transformOrigin: 'center center' }}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center center',
+            display: 'block',
+          }}
         >
           <source src="/resort-reel.mov" type="video/mp4" />
         </video>
