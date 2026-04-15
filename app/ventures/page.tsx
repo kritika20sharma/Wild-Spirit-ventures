@@ -28,7 +28,7 @@ const ventures = [
     cta: 'Visit Footprint Jungle Resort',
     accent: 'from-[#2C4A1E] to-[#3A6B24]',
     externalLink: 'https://tadobafootprintresort.com/',
-    video: '/resort-reel.mov',
+    video: '/video-reel.mp4',
     comingSoon: false,
     sealed: false,
   },

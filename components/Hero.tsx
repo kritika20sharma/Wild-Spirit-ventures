@@ -42,7 +42,7 @@ export default function Hero() {
             display: 'block',
           }}
         >
-          <source src="/resort-reel.mov" type="video/mp4" />
+          <source src="/video-reel.mp4" type="video/mp4" />
         </video>
       </div>
 

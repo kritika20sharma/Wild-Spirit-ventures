@@ -35,15 +35,15 @@ export default function Navbar() {
           ? 'bg-[var(--wsv-cream)] border-b border-[var(--wsv-forest)]/10 shadow-sm'
           : 'bg-transparent border-b border-transparent'
       }`}
-      style={{ height: '9rem' }}
+      style={{ height: '12rem' }}
     >
       <div className="flex items-center justify-between px-10 md:px-20 h-full">
 
         {/* Logo */}
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
-          <div className="relative" style={{ height: '9rem', width: '36rem' }}>
+          <div className="relative" style={{ height: '12rem', width: '48rem' }}>
             <Image
-              src={transparent ? '/wsv-white-logo.png' : '/wsv-logo-new.png'}
+              src={transparent ? '/wsv-white-logo-text.png' : '/wsv-logo-new.png'}
               alt="Wild Spirit Ventures"
               fill
               className="object-contain object-left transition-all duration-500"
