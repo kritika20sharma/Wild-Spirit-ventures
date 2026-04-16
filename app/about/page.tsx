@@ -81,7 +81,8 @@ export default function AboutPage() {
             <div className="font-[family-name:var(--font-lato)] text-gray-600 leading-8 space-y-4 text-sm">
               <p>
                 It started at Tadoba — sitting around a campfire after a tiger sighting that left
-                everyone speechless. We realised that the magic wasn&apos;t just the tiger. It was the
+                everyone speechless. <span className="font-semibold text-[var(--wsv-forest)]">Jaideep Ojha</span>, the founder of Wild Spirit Ventures,
+                realised that the magic wasn&apos;t just the tiger. It was the
                 guide who read the tracks, the cook who understood why a quiet meal under stars
                 matters, and the forest that held all of it together.
               </p>
