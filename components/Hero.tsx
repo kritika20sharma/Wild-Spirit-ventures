@@ -1,9 +1,10 @@
 'use client';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [parallaxY, setParallaxY] = useState(0);
 
   // Skip first 5 seconds so branded/text frames are never shown
   const handleCanPlay = () => {
@@ -15,16 +16,31 @@ export default function Hero() {
     video.play().catch(() => {});
   };
 
+  // Parallax: video drifts up at 40% of scroll speed
+  useEffect(() => {
+    const onScroll = () => {
+      const scrolled = window.scrollY;
+      const heroHeight = window.innerHeight;
+      if (scrolled <= heroHeight) {
+        setParallaxY(scrolled * 0.4);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <section className="relative h-screen overflow-hidden flex items-center justify-center bg-[#1a2e12]">
 
-      {/* ── Full-bleed video — zoomed in, no gaps at any edge ── */}
+      {/* ── Full-bleed video — zoomed in + parallax ── */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: '-10%',
           zIndex: 0,
+          transform: `translateY(${parallaxY}px)`,
+          willChange: 'transform',
         }}
       >
         <video
@@ -53,7 +69,13 @@ export default function Hero() {
       />
 
       {/* ── Content ── */}
-      <div className="relative z-10 mx-auto max-w-3xl px-6 text-center text-white">
+      <div
+        className="relative z-10 mx-auto max-w-3xl px-6 text-center text-white"
+        style={{
+          transform: `translateY(${parallaxY * 0.15}px)`,
+          willChange: 'transform',
+        }}
+      >
 
         <p className="animate-fade-up fade-up-delay-1 mb-3 text-xs tracking-[0.35em] uppercase text-[var(--wsv-gold)] font-[family-name:var(--font-lato)]">
           Wild Spirit Ventures
