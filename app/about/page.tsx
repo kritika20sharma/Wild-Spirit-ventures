@@ -91,11 +91,6 @@ export default function AboutPage() {
                 No excess. No performance. Just honest wildness.
               </p>
               <p>
-                Jonaki Pench followed — a boutique response to Pench&apos;s quieter, more contemplative
-                character. Then Fly Unfettered Expeditions, for those who wanted to go further off
-                the map entirely.
-              </p>
-              <p>
                 Today, Wild Spirit Ventures is the parent that holds these distinct identities
                 together — united by the same ethic, the same obsession with getting it right.
               </p>
