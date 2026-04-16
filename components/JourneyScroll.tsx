@@ -104,8 +104,6 @@ export default function JourneyScroll() {
   // Tiger position: travels 5%→90% of trail
   const jeepTop = `${5 + progress * 85}%`;
 
-  // Stop markers evenly spaced so tiger aligns with each on arrival
-  const stopMarkerY = (i: number) => `${5 + ((i + 0.5) / stops.length) * 85}%`;
 
   return (
     <section
@@ -146,29 +144,8 @@ export default function JourneyScroll() {
             style={{ height: `${5 + progress * 90}%` }}
           />
 
-          {/* Stop markers */}
-          {stops.map((_, i) => {
-            const stopY = stopMarkerY(i);
-            return (
-              <div
-                key={i}
-                className="absolute left-1/2 -translate-x-1/2 transition-all duration-300"
-                style={{ top: stopY }}
-              >
-                <div
-                  className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
-                    activeStop >= i
-                      ? 'bg-[var(--wsv-gold)] border-[var(--wsv-gold)] scale-125'
-                      : 'bg-white border-[var(--wsv-forest)]/30'
-                  }`}
-                />
-                {/* Stop number */}
-                <span className="absolute -right-5 top-1/2 -translate-y-1/2 text-[9px] font-[family-name:var(--font-lato)] text-[var(--wsv-forest)]/40 font-bold">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-              </div>
-            );
-          })}
+          {/* Tiger end-of-trail dot */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--wsv-gold)]/40" />
 
           {/* Tiger scroller */}
           <div
@@ -183,27 +160,17 @@ export default function JourneyScroll() {
         <div className="flex-1 relative overflow-hidden">
             {stops.map((stop, i) => {
               const isActive = activeStop === i;
-              const isPast = activeStop > i;
               return (
                 <div
                   key={stop.slug}
-                  className={`absolute inset-0 px-4 md:px-8 lg:px-12 py-8 flex items-center overflow-y-auto hide-scrollbar transition-all duration-500 ${
-                    isActive
-                      ? 'opacity-100 translate-x-0 pointer-events-auto'
-                      : isPast
-                      ? 'opacity-0 -translate-x-10 pointer-events-none'
-                      : 'opacity-0 translate-x-10 pointer-events-none'
+                  className={`absolute inset-0 px-4 md:px-8 lg:px-12 py-8 flex items-center overflow-y-auto hide-scrollbar transition-opacity duration-700 ${
+                    isActive ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                   }`}
                 >
                   <div className="w-full max-w-3xl">
 
-                    {/* Stop label */}
-                    <div className="flex items-center gap-3 mb-5 flex-wrap">
-                      <div className="w-6 h-6 rounded-full bg-[var(--wsv-gold)]/15 flex items-center justify-center">
-                        <span className="text-[10px] font-bold text-[var(--wsv-gold)] font-[family-name:var(--font-lato)]">
-                          {String(i + 1).padStart(2, '0')}
-                        </span>
-                      </div>
+                    {/* Badge */}
+                    <div className="flex items-center gap-3 mb-5">
                       <span className={`text-xs px-3 py-1 rounded-full text-white font-[family-name:var(--font-lato)] tracking-widest uppercase ${stop.badgeColor}`}>
                         {stop.badge}
                       </span>
