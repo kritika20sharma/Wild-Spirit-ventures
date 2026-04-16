@@ -81,36 +81,15 @@ const stops = [
 export default function JourneyScroll() {
   const sectionRef = useRef<HTMLElement>(null);
   const trailRef = useRef<HTMLDivElement>(null);
-  const [jeepProgress, setJeepProgress] = useState(0);
-  const [activeStop, setActiveStop] = useState(-1);
-  const stopRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const lastProgress = useRef(0);
+  const [progress, setProgress] = useState(0);
 
   const onScroll = useCallback(() => {
     const section = sectionRef.current;
     if (!section) return;
-
     const rect = section.getBoundingClientRect();
     const scrollable = rect.height - window.innerHeight;
-    const rawProgress = Math.max(0, Math.min(1, -rect.top / scrollable));
-    setJeepProgress(rawProgress);
-
-    lastProgress.current = rawProgress;
-
-    // Which stop is closest to viewport center
-    const viewMid = window.innerHeight / 2;
-    let closest = -1;
-    let closestDist = Infinity;
-    stopRefs.current.forEach((el, i) => {
-      if (!el) return;
-      const r = el.getBoundingClientRect();
-      const dist = Math.abs(r.top + r.height / 2 - viewMid);
-      if (dist < closestDist && r.top < viewMid + 100) {
-        closestDist = dist;
-        closest = i;
-      }
-    });
-    setActiveStop(closest);
+    const p = Math.max(0, Math.min(1, -rect.top / scrollable));
+    setProgress(p);
   }, []);
 
   useEffect(() => {
@@ -119,8 +98,14 @@ export default function JourneyScroll() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [onScroll]);
 
-  // Clamp jeep Y between 5% and 90% of trail height
-  const jeepTop = `${5 + jeepProgress * 85}%`;
+  // Active stop derived directly from scroll progress
+  const activeStop = Math.min(stops.length - 1, Math.floor(progress * stops.length));
+
+  // Tiger position: travels 5%→90% of trail
+  const jeepTop = `${5 + progress * 85}%`;
+
+  // Stop markers evenly spaced so tiger aligns with each on arrival
+  const stopMarkerY = (i: number) => `${5 + ((i + 0.5) / stops.length) * 85}%`;
 
   return (
     <section
@@ -158,12 +143,12 @@ export default function JourneyScroll() {
           {/* Trail fill — solid line that grows with progress */}
           <div
             className="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 bg-[var(--wsv-gold)] transition-none"
-            style={{ height: `${5 + jeepProgress * 90}%` }}
+            style={{ height: `${5 + progress * 90}%` }}
           />
 
           {/* Stop markers */}
           {stops.map((_, i) => {
-            const stopY = `${10 + i * 38}%`;
+            const stopY = stopMarkerY(i);
             return (
               <div
                 key={i}
@@ -194,19 +179,21 @@ export default function JourneyScroll() {
           </div>
         </div>
 
-        {/* ── RIGHT: Venture cards ── */}
-        <div className="flex-1 overflow-y-auto hide-scrollbar relative">
-          <div className="flex flex-col justify-around min-h-full py-8 gap-0">
+        {/* ── RIGHT: Venture cards — absolute stacked, one visible at a time ── */}
+        <div className="flex-1 relative overflow-hidden">
             {stops.map((stop, i) => {
               const isActive = activeStop === i;
+              const isPast = activeStop > i;
               return (
                 <div
                   key={stop.slug}
-                  ref={(el) => { stopRefs.current[i] = el; }}
-                  className={`px-4 md:px-8 lg:px-12 py-8 transition-all duration-700 ${
-                    isActive ? 'opacity-100 translate-x-0' : 'opacity-40 translate-x-4'
+                  className={`absolute inset-0 px-4 md:px-8 lg:px-12 py-8 flex items-center overflow-y-auto hide-scrollbar transition-all duration-500 ${
+                    isActive
+                      ? 'opacity-100 translate-x-0 pointer-events-auto'
+                      : isPast
+                      ? 'opacity-0 -translate-x-10 pointer-events-none'
+                      : 'opacity-0 translate-x-10 pointer-events-none'
                   }`}
-                  style={{ minHeight: '100vh', display: 'flex', alignItems: 'center' }}
                 >
                   <div className="w-full max-w-3xl">
 
@@ -381,7 +368,6 @@ export default function JourneyScroll() {
                 </div>
               );
             })}
-          </div>
         </div>
       </div>
 
