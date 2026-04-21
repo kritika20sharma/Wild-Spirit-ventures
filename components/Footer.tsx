@@ -22,23 +22,14 @@ export default function Footer() {
         {/* Brand */}
         <div className="md:col-span-1 flex flex-col gap-4">
           <div className="flex items-center gap-4">
-            <div className="relative w-12 h-12 shrink-0">
+            <div className="relative h-10 w-52 shrink-0">
               <Image
-                src="/tree-bestlogo.png"
+                src="/logo-white.png"
                 alt="Wild Spirit Ventures"
                 fill
-                className="object-contain"
-                style={{ filter: 'invert(1)' }}
+                className="object-contain object-left"
               />
             </div>
-            <span className="flex flex-col leading-none">
-              <span className="font-[family-name:var(--font-playfair)] text-[1.05rem] font-bold text-white tracking-tight">
-                Wild Spirit
-              </span>
-              <span className="font-[family-name:var(--font-playfair)] text-[0.6rem] font-normal tracking-[0.38em] uppercase text-[var(--wsv-gold)] mt-0.5">
-                Ventures
-              </span>
-            </span>
           </div>
           <p className="text-sm text-gray-300 font-[family-name:var(--font-lato)] leading-6 max-w-xs">
             One trusted brand. Multiple wildlife destinations. Curated, ethical safaris across India&apos;s finest reserves.
