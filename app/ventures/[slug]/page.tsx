@@ -253,16 +253,6 @@ export default function VentureDetailPage({ params }: { params: { slug: string }
                 {v.contact.phone}
               </a>
             )}
-            {v.externalLink && (
-              <a
-                href={v.externalLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full border border-white/30 px-8 py-3 text-white/80 font-[family-name:var(--font-lato)] hover:bg-white/10 transition-colors"
-              >
-                Visit Website ↗
-              </a>
-            )}
           </div>
         </div>
       </section>
@@ -406,16 +396,6 @@ export default function VentureDetailPage({ params }: { params: { slug: string }
                 >
                   WhatsApp →
                 </a>
-                {v.externalLink && (
-                  <a
-                    href={v.externalLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-full border border-[var(--wsv-forest)]/30 px-6 py-2.5 text-[var(--wsv-forest)] text-sm font-[family-name:var(--font-lato)] hover:bg-[var(--wsv-forest)]/5 transition-colors"
-                  >
-                    Visit Website ↗
-                  </a>
-                )}
               </div>
             </div>
           </ScrollReveal>

@@ -222,16 +222,6 @@ export default function VenturesPage() {
                       >
                         {v.cta}
                       </Link>
-                      {'externalLink' in v && v.externalLink && (
-                        <a
-                          href={v.externalLink as string}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="rounded-full border border-[var(--wsv-forest)]/40 px-6 py-2.5 text-sm text-[var(--wsv-forest)] hover:bg-[var(--wsv-forest)]/5 transition-colors font-[family-name:var(--font-lato)]"
-                        >
-                          Visit Website ↗
-                        </a>
-                      )}
                     </div>
                   </div>
                   <div>

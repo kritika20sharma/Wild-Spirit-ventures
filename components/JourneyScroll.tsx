@@ -191,11 +191,6 @@ export default function JourneyScroll() {
                       <Link href="/contact" className="rounded-full bg-[var(--wsv-forest)] px-6 py-2.5 text-sm font-semibold text-[var(--wsv-cream)] hover:bg-[var(--wsv-earth)] transition-colors font-[family-name:var(--font-lato)]">
                         Visit Footprint Jungle Resort →
                       </Link>
-                      {stop.externalLink && (
-                        <a href={stop.externalLink} target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--wsv-sage)] font-[family-name:var(--font-lato)] hover:text-[var(--wsv-forest)] underline underline-offset-4">
-                          Visit Website ↗
-                        </a>
-                      )}
                       {stop.phone && (
                         <a href={`tel:${stop.phone.replace(/\s/g, '')}`} className="text-sm text-[var(--wsv-sage)] font-[family-name:var(--font-lato)] hover:text-[var(--wsv-forest)] transition-colors">
                           {stop.phone}
