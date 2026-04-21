@@ -22,13 +22,13 @@ export default function Footer() {
         {/* Brand */}
         <div className="md:col-span-1 flex flex-col gap-4">
           <div className="flex items-center gap-4">
-            <div className="relative w-12 h-16 shrink-0">
+            <div className="relative w-12 h-12 shrink-0">
               <Image
-                src="/tree-logo.png"
+                src="/tree-icon.jpeg"
                 alt="Wild Spirit Ventures"
                 fill
                 className="object-contain"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                style={{ filter: 'invert(1)' }}
               />
             </div>
             <span className="flex flex-col leading-none">
