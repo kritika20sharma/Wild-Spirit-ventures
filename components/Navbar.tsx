@@ -40,7 +40,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
-          <div className="relative h-12 w-36 md:h-20 md:w-[22rem]">
+          <div className="relative h-14 w-44 md:h-24 md:w-[26rem]">
             <Image
               src={transparent ? '/wsv-white-logo-text.png' : '/wsv-logo-new.png'}
               alt="Wild Spirit Ventures"
