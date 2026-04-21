@@ -24,7 +24,7 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <div className="relative w-12 h-12 shrink-0">
               <Image
-                src="/tree-icon.jpeg"
+                src="/tree-bestlogo.png"
                 alt="Wild Spirit Ventures"
                 fill
                 className="object-contain"
