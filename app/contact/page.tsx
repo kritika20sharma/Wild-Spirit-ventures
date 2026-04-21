@@ -10,6 +10,8 @@ const ventures = [
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [waUrl, setWaUrl] = useState('https://wa.me/919682716827');
   const [form, setForm] = useState({
     name: '', phone: '', email: '', venture: '', message: '',
   });
@@ -18,9 +20,36 @@ export default function ContactPage() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Replace with your actual form handler / API call
+    setLoading(true);
+
+    // Submit to Formspree → emails jaideep@wildspiritstays.com
+    await fetch('https://formspree.io/f/xpqkjgpr', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        name: form.name,
+        phone: form.phone,
+        email: form.email,
+        venture: form.venture,
+        message: form.message,
+      }),
+    });
+
+    // Build pre-filled WhatsApp message with all form data
+    const waMessage = [
+      `Hi Wild Spirit Ventures! 🌿`,
+      ``,
+      `*Name:* ${form.name}`,
+      `*Phone:* ${form.phone}`,
+      form.email ? `*Email:* ${form.email}` : null,
+      form.venture ? `*Interested in:* ${form.venture}` : null,
+      `*Message:* ${form.message}`,
+    ].filter(Boolean).join('\n');
+
+    setWaUrl(`https://wa.me/919682716827?text=${encodeURIComponent(waMessage)}`);
+    setLoading(false);
     setSubmitted(true);
   };
 
@@ -124,7 +153,7 @@ export default function ContactPage() {
                   feel free to WhatsApp us for a faster reply.
                 </p>
                 <a
-                  href="https://wa.me/919682716827"
+                  href={waUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-2 rounded-full bg-[#25D366] px-8 py-3 text-white font-semibold font-[family-name:var(--font-lato)] text-sm hover:bg-[#20b956] transition-colors"
@@ -218,9 +247,10 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full rounded-full bg-[var(--wsv-forest)] py-3.5 text-[var(--wsv-cream)] font-semibold font-[family-name:var(--font-lato)] hover:bg-[var(--wsv-earth)] transition-colors duration-300"
+                  disabled={loading}
+                  className="w-full rounded-full bg-[var(--wsv-forest)] py-3.5 text-[var(--wsv-cream)] font-semibold font-[family-name:var(--font-lato)] hover:bg-[var(--wsv-earth)] transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send Enquiry
+                  {loading ? 'Sending…' : 'Send Enquiry'}
                 </button>
 
                 <p className="text-xs text-center text-gray-400 font-[family-name:var(--font-lato)]">
