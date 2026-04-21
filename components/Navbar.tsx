@@ -40,7 +40,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
-          <div className="relative h-14 w-44 md:h-24 md:w-[26rem]">
+          <div className="relative h-16 w-52 md:h-28 md:w-[30rem]">
             <Image
               src="/logo-white.png"
               alt="Wild Spirit Ventures"
