@@ -5,8 +5,6 @@ import { useState } from 'react';
 
 const ventures = [
   'Footprint Jungle Resort (Tadoba)',
-  'Jonaki Pench (Pench)',
-  'Fly Unfettered Expeditions',
   'Not sure yet — help me choose',
 ];
 
