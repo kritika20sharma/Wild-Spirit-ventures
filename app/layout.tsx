@@ -18,12 +18,31 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: 'Wild Spirit Ventures — Curated Safari Stays Across India',
+  title: 'Wild Spirit Ventures — Best Jungle Resort & Safari Stays in India',
   description:
-    'One trusted brand. Multiple wildlife destinations. Ethical safaris at Tadoba, Pench, and beyond — Footprint Jungle Resort, Jonaki Pench, Fly Unfettered Expeditions.',
+    'Experience India\'s finest wildlife at Footprint Jungle Resort, Tadoba. Expert tiger safaris, jungle view rooms, swimming pool & organic dining. Best rated wildlife resort Maharashtra. Book your jungle stay today.',
+  keywords: [
+    'Tadoba jungle resort',
+    'resort near Tadoba tiger reserve',
+    'jungle stay Tadoba',
+    'wildlife resort Maharashtra',
+    'Tadoba safari package with stay',
+    'best resort near Tadoba',
+    'tiger safari Tadoba',
+    'eco resort Central India',
+    'jungle resort with swimming pool',
+    'resort inside Tadoba buffer zone',
+    'family jungle resort Chandrapur',
+    'Tadoba resort with pool and safaris',
+    'weekend jungle getaway Maharashtra',
+    'Footprint Jungle Resort',
+    'Wild Spirit Ventures',
+    'luxury jungle lodge Tadoba',
+    'wildlife immersion experience India',
+  ],
   openGraph: {
-    title: 'Wild Spirit Ventures',
-    description: 'Curated safari stays across India\'s finest wildlife corridors.',
+    title: 'Wild Spirit Ventures — Best Jungle Resort & Tiger Safaris at Tadoba',
+    description: 'Stay at the edge of Tadoba Tiger Reserve. Expert safaris, jungle view rooms, pool & forest dining. Book Footprint Jungle Resort today.',
     type: 'website',
   },
 };

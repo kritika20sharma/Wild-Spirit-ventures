@@ -1,4 +1,5 @@
 'use client';
+// Metadata handled in layout for client pages
 import Navbar from '@/components/Navbar';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useState } from 'react';

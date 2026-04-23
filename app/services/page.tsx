@@ -4,9 +4,18 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Experiences | Wild Spirit Ventures',
+  title: 'Safari Experiences | Tiger Safaris, Jungle Walks & More — Wild Spirit Ventures',
   description:
-    'Wildlife safaris, guided treks, nature walks, and cultural immersions across Tadoba, Pench, and beyond.',
+    'Book expert-guided tiger safaris, jungle treks, nature walks and wildlife immersion experiences at Tadoba Tiger Reserve. Morning & evening jeep safaris with certified naturalists.',
+  keywords: [
+    'tiger safari Tadoba booking',
+    'jeep safari Tadoba',
+    'jungle trek Maharashtra',
+    'guided nature walk Tadoba',
+    'wildlife experience Central India',
+    'morning evening safari Tadoba',
+    'certified naturalist safari India',
+  ],
 };
 
 const experiences = [

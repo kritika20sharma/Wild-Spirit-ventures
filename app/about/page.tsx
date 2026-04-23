@@ -5,9 +5,16 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us | Wild Spirit Ventures',
+  title: 'About Us | Wild Spirit Ventures — Ethical Safari Experts at Tadoba',
   description:
-    'The story behind Wild Spirit Ventures — our passion for India\'s wildlife, our commitment to ethical safaris, and the people who make it all happen.',
+    'Founded by Jaideep Ojha, Wild Spirit Ventures is committed to authentic, ethical wildlife experiences at Tadoba and beyond. Learn our story, mission, and values behind India\'s finest jungle stays.',
+  keywords: [
+    'Wild Spirit Ventures about',
+    'ethical safari India',
+    'Jaideep Ojha Wild Spirit Ventures',
+    'responsible wildlife tourism Maharashtra',
+    'Tadoba conservation resort',
+  ],
 };
 
 const values = [

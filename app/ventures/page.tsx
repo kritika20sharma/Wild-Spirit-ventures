@@ -5,9 +5,17 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Ventures | Wild Spirit Ventures',
+  title: 'Our Ventures | Footprint Jungle Resort Tadoba & More — Wild Spirit Ventures',
   description:
-    'Three distinct wildlife experiences under one trusted brand — Footprint Jungle Resort, Jonaki Pench, and Fly Unfettered Expeditions.',
+    'Explore our wildlife ventures — Footprint Jungle Resort at Tadoba Tiger Reserve, Maharashtra. Expert-guided tiger safaris, eco stays, and immersive jungle experiences across Central India.',
+  keywords: [
+    'Footprint Jungle Resort Tadoba',
+    'Tadoba tiger reserve resort',
+    'jungle safari Maharashtra',
+    'wildlife resort Central India',
+    'Tadoba buffer zone stay',
+    'eco resort Chandrapur',
+  ],
 };
 
 const ventures = [
